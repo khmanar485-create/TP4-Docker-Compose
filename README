@@ -1,0 +1,96 @@
+
+# TP4 – Docker et Docker Compose
+
+## 1. Présentation du projet
+
+Ce projet consiste à conteneuriser une application MERN composée de trois services :
+
+- **Client :** application frontend développée avec React.
+- **Server :** API backend développée avec Node.js et Express.
+- **MongoDB :** base de données NoSQL.
+
+Docker Compose permet de gérer et de lancer l'ensemble des services à partir d'un seul fichier de configuration.
+
+## 2. Architecture du projet
+
+```text
+MyAppReact/
+│
+├── client/
+│   ├── Dockerfile
+│   └── ...
+│
+├── server/
+│   ├── Dockerfile
+│   └── ...
+│
+├── docker-compose.yml
+└── README.md
+```
+
+## 3. Technologies utilisées
+
+- Docker
+- Docker Compose
+- Node.js
+- Express.js
+- React
+- MongoDB
+
+## 4. Configuration Docker
+
+Chaque service possède sa propre configuration Docker :
+
+- Le client est construit à partir du dossier `client`.
+- Le serveur est construit à partir du dossier `server`.
+- MongoDB utilise l'image officielle `mongo`.
+
+Les trois services communiquent à travers un réseau Docker de type `bridge`, défini dans `docker-compose.yml`.
+
+La variable d'environnement `MONGO_URI` permet au serveur de se connecter à MongoDB :
+
+`mongodb://mongodb:27017/myapp`
+
+## 5. Construction et lancement
+
+### Lancer l'application avec Docker Compose
+
+Depuis le répertoire principal du projet, exécuter :
+
+```bash
+docker compose up --build
+```
+
+Cette commande construit les images nécessaires et démarre les trois services.
+
+### Arrêter l'application
+
+```bash
+docker compose down
+```
+
+## 6. Accès aux services
+
+| Service | Adresse |
+|---|---|
+| Client React | http://localhost:3000 |
+| API Express | http://localhost:9000 |
+| API Health | http://localhost:9000/api/health |
+
+## 7. Vérification des conteneurs
+
+Pour vérifier les conteneurs actifs :
+
+```bash
+docker ps
+```
+
+Pour consulter les logs :
+
+```bash
+docker compose logs
+```
+
+## 8. Conclusion
+
+La conteneurisation de l'application a été réalisée avec Docker et Docker Compose. Les trois services sont configurés pour fonctionner ensemble sur un réseau commun, facilitant ainsi le déploiement et la gestion de l'application.

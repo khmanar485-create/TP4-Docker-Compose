@@ -16,11 +16,11 @@ Docker Compose permet de gérer et de lancer l'ensemble des services à partir d
 ```text
 MyAppReact/
 │
-├── client/
+├── Client/
 │   ├── Dockerfile
 │   └── ...
 │
-├── server/
+├── Server/
 │   ├── Dockerfile
 │   └── ...
 │
@@ -41,8 +41,8 @@ MyAppReact/
 
 Chaque service possède sa propre configuration Docker :
 
-- Le client est construit à partir du dossier `client`.
-- Le serveur est construit à partir du dossier `server`.
+- Le client est construit à partir du dossier `Client`.
+- Le serveur est construit à partir du dossier `Server`.
 - MongoDB utilise l'image officielle `mongo`.
 
 Les trois services communiquent à travers un réseau Docker de type `bridge`, défini dans `docker-compose.yml`.
